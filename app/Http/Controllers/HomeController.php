@@ -36,7 +36,7 @@ class HomeController extends Controller
      */
     public function forum()
     {
-        $threads = Thread::paginate(1);
+        $threads = Thread::paginate(2);
 
         return view('forum.home', compact('threads'));
     }

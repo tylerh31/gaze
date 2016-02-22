@@ -9,7 +9,7 @@
                 @foreach($threads as $thread)
                     <div class="panel-body">
                         <h1>{!! $thread['title'] !!}</h1>
-                        <p>{!! $thread['body'] !!}</p>
+                        <p>{!! str_limit($thread['body'], 150) !!}</p>
                         {!! $thread['user'] !!}
                     </div>
                 @endforeach
