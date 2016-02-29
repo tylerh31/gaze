@@ -1,5 +1,7 @@
 <?php
 
+use App\Thread;
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -33,7 +35,12 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::any('/home', 'HomeController@index');
 
-    Route::get('/forum', 'HomeController@forum');
+    Route::any('/forum', 'HomeController@forum');
+
+    Route::any('/new', 'HomeController@newThread');
+ 
+    Route::any('/singleThread/{id}', 'HomeController@singleThread');
+
 });
