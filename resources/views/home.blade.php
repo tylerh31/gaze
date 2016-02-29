@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="col-md-10 col-md-offset-1">
                 <div class="jumbotron">
-                  <h1>You are now logged in!</h1>
+                  <h1>{!! Auth::user()->name !!} is now logged in!</h1>
                   <p>Be sure to check out the news section for upcoming events.</p>
                 </div>
             </div>

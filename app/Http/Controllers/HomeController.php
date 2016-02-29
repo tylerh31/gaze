@@ -38,6 +38,7 @@ class HomeController extends Controller
     public function forum()
     {
         $threads = Thread::orderBy('created_at', 'desc')->paginate(10);
+        #dd($threads);
         return view('forum.home', compact('threads'));
     }
 
@@ -55,6 +56,26 @@ class HomeController extends Controller
             ['title' => $request->get('title'), 'body' => $request->get('body'), 'category' => $request->get('category'), 'user' => Auth::user()->name, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
         return view('forum.successful');
+        }
+    }
+
+    public function newReply(Request $request, $id)
+    {
+        
+        if($request->get('body') == '')
+        {
+            $post = DB::table('threads')->where('id', $id)->get();
+            $reply = DB::table('replies')->where('replyToId', $id)->get();
+            return view('forum.singleThread', compact('post', 'reply'));
+        }
+        else
+        {
+        DB::table('replies')->insert(
+            ['body' => $request->get('body'), 'replyToId' => $id, 'user' => Auth::user()->name, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
+        );
+        $post = DB::table('threads')->where('id', $id)->get();
+        $reply = DB::table('replies')->where('replyToId', $id)->get();
+        return view('forum.singleThread', compact('post', 'reply'));
         }
     }
 

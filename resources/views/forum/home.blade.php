@@ -5,13 +5,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            {!! $threads->render() !!}
             <div class="panel panel-primary">
                 <div class="panel-heading">Forum</div>
                 @foreach($threads as $thread)
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <span class="badge"> Replies: 4</span>
+                                <span class="badge"> Replies: </span>
                                 <a href="/singleThread/{{ $thread->id }}">{!! $thread->title !!}</a>
                                 <p>{!! str_limit($thread['body'], 150) !!}</p>
                                 @if($thread['category'] == '0')

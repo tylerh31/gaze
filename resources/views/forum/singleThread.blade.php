@@ -7,10 +7,25 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"><h3>{!! $post['0']->title !!}<h3></div>
                     <div class="panel-body">
-                        <h5>{!! $post['0']->body !!}</h5>
-                        <h6>{!! $post['0']->category !!}</h6>
-                        <p>{!! $post['0']->user !!}</p>
-                        <?php $a=0; ?>
+                        @foreach($post as $pos)
+                            <h5>{!! $pos->body !!}</h5>
+                            @if($pos->category == '0')
+                                <h6>Astronomy</h6>
+                            @elseif($pos->category == '1')
+                                <h6>Astrophotography</h6>
+                            @else
+                                <h6>Location</h6>
+                            @endif
+                        <p>{!! $pos->user !!}</p>
+                        {!! Form::open(array('action' => array('HomeController@newReply', $pos->id))) !!}
+                            <div class="form-group">
+                                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::submit('Reply', ['class' => 'btn btn-primary form-control']) !!}
+                            </div>
+                        {!! Form::close() !!}
+                        @endforeach
                         @foreach($reply as $rep)
                             <div class="panel-body">
                             <h3>{!! $rep->user !!}</h3>

@@ -43,4 +43,8 @@ Route::group(['middleware' => 'web'], function () {
  
     Route::any('/singleThread/{id}', 'HomeController@singleThread');
 
+    Route::any('/singleThread/{id}', 'HomeController@newReply');
+
+
+
 });
