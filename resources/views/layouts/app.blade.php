@@ -23,6 +23,20 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+
+        .stylish-input-group .input-group-addon{
+            background: white !important; 
+        }
+        .stylish-input-group .form-control{
+            border-right:0; 
+            box-shadow:0 0 0; 
+            border-color:#ccc;
+        }
+        .stylish-input-group button{
+            border:0;
+            background:transparent;
+        }
     </style>
 </head>
 <body id="app-layout">

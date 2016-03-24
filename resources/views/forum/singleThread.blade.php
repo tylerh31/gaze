@@ -19,7 +19,7 @@
                         <p>{!! $pos->user !!}</p>
                         {!! Form::open(array('action' => array('HomeController@newReply', $pos->id))) !!}
                             <div class="form-group">
-                                {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+                                {!! Form::textarea('body', 'Enter Comment Here...', ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::submit('Reply', ['class' => 'btn btn-primary form-control']) !!}
@@ -29,7 +29,7 @@
                         @foreach($reply as $rep)
                             <div class="panel-body">
                             <h3>{!! $rep->user !!}</h3>
-                            <h5>{!! $rep->body !!}</h5>
+                            <blockquote><h5>{!! $rep->body !!}</h5></blockquote>
                             <h6>{!! $rep->created_at !!}</h6>
                             </div>                  
                         @endforeach

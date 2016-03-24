@@ -45,6 +45,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::any('/singleThread/{id}', 'HomeController@newReply');
 
-
+    Route::any('/weather', 'HomeController@weather');
 
 });
