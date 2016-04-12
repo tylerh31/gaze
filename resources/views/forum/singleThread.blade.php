@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-primary">
+            <div class="panel panel-thread">
                 <div class="panel-heading"><h3>{!! $post['0']->title !!}<h3></div>
                     <div class="panel-body">
                         @foreach($post as $pos)
@@ -22,7 +22,7 @@
                                 {!! Form::textarea('body', 'Enter Comment Here...', ['class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::submit('Reply', ['class' => 'btn btn-primary form-control']) !!}
+                                {!! Form::submit('Reply', ['class' => 'btn btn-thread form-control']) !!}
                             </div>
                         {!! Form::close() !!}
                         @endforeach

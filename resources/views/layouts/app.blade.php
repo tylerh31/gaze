@@ -16,8 +16,12 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
+        a {
+            color: white;
+        }
         body {
             font-family: 'Lato';
+            background-color: #7f8c8d;
         }
 
         .fa-btn {
@@ -26,21 +30,114 @@
 
 
         .stylish-input-group .input-group-addon{
-            background: white !important; 
+            background: #95a5a6 !important; 
         }
         .stylish-input-group .form-control{
             border-right:0; 
             box-shadow:0 0 0; 
             border-color:#ccc;
+            background: #95a5a6
         }
         .stylish-input-group button{
             border:0;
             background:transparent;
         }
+        .navbar-gaze {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+        }
+        @import url(//fonts.googleapis.com/css?family=Open+Sans:400,600);
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: -0.1rem -0.1rem;
+          background-color: #c4c8cc;
+          color: #404448;
+          font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          line-height: 1.4;
+        }
+
+        h1 {
+          margin: 0 0 2rem;
+          font-weight: 400;
+          line-height: 1.1;
+          text-align: center;
+        }
+
+        p {
+          margin: 0 0 1.4em;
+        }
+
+        ul {
+          margin: 0 0 1.4em;
+          padding: 0;
+          padding-left: 1.15em;
+          list-style-type: square;
+        }
+
+        /**
+         * The card stack mixin. 
+         * 
+         * @param   color  $card-color    Main color of the card stack. Defaults to white.
+         * @param   color  $shadow-color  Color of the shadow. Defaults to black.
+         * 
+         * @return  box-shadow            Applies a box shadow to the element.
+         */
+        .card {
+          margin: 3rem auto 2rem;
+          padding: 1rem;
+          min-width: 10rem;
+          max-width: 35rem;
+          background-color: white;
+          word-wrap: break-word;
+          box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f2f2f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e6e6e6, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+        }
+        .card.card-primary, .card.card-dark {
+          color: white;
+        }
+        .card.card-primary {
+          background-color: tomato;
+          text-shadow: 0 0.0625em 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f25e43, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e65940, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+        }
+        .card.card-dark {
+          background-color: #404040;
+          box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #3d3d3d, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #3a3a3a, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+        }
+        .card > :last-child {
+          margin-bottom: 0;
+        }
+        .zip {
+            text-align: center;
+        }
+        .thread {
+            color: #2980b9;
+        }
+        .panel-thread > .panel-heading {
+            color: #fff;
+            background-color: #2c3e50;
+            border-color: #337ab7;
+        }
+        .btn-thread {
+            background-color: #2c3e50;
+            border-color: #337ab7;
+            color: white;
+        }
+        a:hover {
+            color: #2c3e50;
+        }
+        .jumbotron-dark {
+          background-color: #ecf0f1;
+        }
+        .tast {
+          margin: auto;
+        }
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-gaze">
         <div class="container">
             <div class="navbar-header">
 
@@ -53,7 +150,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('#') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     Gaze
                 </a>
             </div>
@@ -65,7 +162,9 @@
                         <li><a href="{{ url('/home') }}">Home</a></li>
                     @else
                         <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('/news') }}">News</a></li>
                         <li><a href="{{ url('/forum') }}">Forum</a></li>
+                        <li><a href="{{ url('/weather') }}">Weather</a></li>
                     @endif
                 </ul>
 

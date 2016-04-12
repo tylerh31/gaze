@@ -5,15 +5,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            {!! $threads->render() !!}
-            <div class="panel panel-primary">
+            <div class="panel panel-thread">
                 <div class="panel-heading">Forum</div>
                 @foreach($threads as $thread)
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <span class="badge"> Replies: </span>
-                                <a href="/singleThread/{{ $thread->id }}">{!! $thread->title !!}</a>
+                                <a href="/singleThread/{{ $thread->id }}" class="thread">{!! $thread->title !!}</a>
                                 <p>{!! str_limit($thread['body'], 150) !!}</p>
                                 @if($thread['category'] == '0')
                                     <h6>Astronomy</h6>
@@ -28,7 +26,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="panel panel-primary">
+            <div class="panel panel-thread">
                 <div class="panel-heading">New Thread</div>
                     <div class="panel-body">
                         {!! Form::open(['method' => 'POST', 'action' => 'HomeController@newThread']) !!}
@@ -45,7 +43,7 @@
                             )) !!}
                             <br>
                             <br>
-                                {!! Form::submit('Post', ['class' => 'btn btn-primary form-control']) !!}
+                                {!! Form::submit('Post', ['class' => 'btn btn-thread form-control']) !!}
                             </div>
                         {!! Form::close() !!}
                     </div>

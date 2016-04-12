@@ -14,7 +14,12 @@ use App\Thread;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('stars');
+});
+
+Route::get('/twitter', function()
+{
+    return Twitter::getUserTimeline(['screen_name' => 'tylerhamsen', 'count' => 20, 'format' => 'json']);
 });
 
 /*
@@ -46,5 +51,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('/singleThread/{id}', 'HomeController@newReply');
 
     Route::any('/weather', 'HomeController@weather');
+
+    Route::any('/news', 'HomeController@news');
 
 });

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App;
+use PDF;
 use DB;
 use App\Thread;
 use App\Http\Requests;
@@ -148,11 +150,23 @@ class HomeController extends Controller
             $sun_set = $sun_set_hour . ":" . $sun_set_minute . " A.M.";
         }
 
-
+        $pdf = PDF::loadView('weather.test', compact('moon_phase', 'moon_illum', 'moon_rise', 'sun_set', 'night_text', 'night_forecast', 'location'));
+        //return $pdf->download('invoice.pdf');
         //dd($moon_rise, $sun_set);
 
         return view('weather.show', compact('details', 'moon_phase', 'moon_illum', 'moon_rise', 'sun_set', 'night_text', 'night_forecast', 'location'));
         //dd($moon_name, $moon_illum, date('r', $moon_rise), date('r', $sun_rise), date('r', $sun_set), date('r', time()));
+    }
+
+    public function stars()
+    {
+        return view('stars');
+    }
+
+    public function news()
+    {
+
+        return view('news.show');
     }
 
     //http://api.wunderground.com/api/565010eb55032207/conditions/q/CA/San_Francisco.json
