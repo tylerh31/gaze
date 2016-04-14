@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     Your post was successful!
                 </div>
-                {!! Form::open(['method' => 'POST', 'action' => 'HomeController@forum']) !!}
+                {!! Form::open(['method' => 'POST', 'action' => 'HomeController@forumByCat']) !!}
                     {!! Form::submit('Go Back to Forum', ['class' => 'btn btn-primary form-control']) !!}
                 {!! Form::close() !!}
             </div>

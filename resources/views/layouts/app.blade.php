@@ -86,7 +86,7 @@
          * @return  box-shadow            Applies a box shadow to the element.
          */
         .card {
-          margin: 3rem auto 2rem;
+          margin: 1rem auto 2rem;
           padding: 1rem;
           min-width: 10rem;
           max-width: 35rem;
@@ -103,7 +103,7 @@
           box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f25e43, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e65940, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
         }
         .card.card-dark {
-          background-color: #404040;
+          background-color: black;
           box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #3d3d3d, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #3a3a3a, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
         }
         .card > :last-child {
@@ -120,6 +120,11 @@
             background-color: #2c3e50;
             border-color: #337ab7;
         }
+        .panel-category > .panel-heading {
+            color: #fff;
+            background-color: black;
+            border-color: #337ab7;
+        }
         .btn-thread {
             background-color: #2c3e50;
             border-color: #337ab7;
@@ -134,7 +139,37 @@
         .tast {
           margin: auto;
         }
+        .category {
+          text-align: left;
+          margin-left: 1.5rem;
+        }
+
+
+        @import url('http://fonts.googleapis.com/css?family=Offside');
+        #container-moon {
+          width:500px;
+          margin:auto;  
+        }
+        .p-moon {
+          font-family:'Offside', sans-serif;
+          font-size:1.8em;
+          color:white;
+          text-align:center;
+          text-shadow:0 0 10px #fff;
+          float:left;
+          margin-left:30px;
+          margin-top:110px;
+        }
+        #moonCanvas {
+          display:block;
+          margin:50px auto;
+          float:left
+        }
     </style>
+
+
+
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-gaze">
@@ -163,8 +198,9 @@
                     @else
                         <li><a href="{{ url('/home') }}">Home</a></li>
                         <li><a href="{{ url('/news') }}">News</a></li>
-                        <li><a href="{{ url('/forum') }}">Forum</a></li>
+                        <li><a href="{{ url('/categories') }}">Forum</a></li>
                         <li><a href="{{ url('/weather') }}">Weather</a></li>
+                        <li><a href="{{ url('/solarsystem') }}">Solar System</a></li>
                     @endif
                 </ul>
 

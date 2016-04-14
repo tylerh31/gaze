@@ -54,4 +54,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::any('/news', 'HomeController@news');
 
+    Route::any('/solarsystem', 'HomeController@solarsystem');
+
+    Route::any('/categories', 'HomeController@categories');
+
+    Route::any('/categories/{cat}', 'HomeController@forumByCat');
+
 });

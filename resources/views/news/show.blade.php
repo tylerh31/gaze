@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
+	<div class="col-sm-6">
 <a class="twitter-timeline" href="https://twitter.com/tylerhamsen/lists/gaze" data-widget-id="717932931776454656" width="50rem" height="65rem">Tweets from https://twitter.com/tylerhamsen/lists/gaze</a>
+</div>
 </div>
 @endsection
 
