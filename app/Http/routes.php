@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('stars');
 });
 
+Route::get('/test', function () {
+    return view('hometest');
+});
+
 Route::get('/twitter', function()
 {
     return Twitter::getUserTimeline(['screen_name' => 'tylerhamsen', 'count' => 20, 'format' => 'json']);
@@ -59,5 +63,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('/categories', 'HomeController@categories');
 
     Route::any('/categories/{cat}', 'HomeController@forumByCat');
+
+    Route::any('/destroy/{id}', 'HomeController@destroy');
 
 });

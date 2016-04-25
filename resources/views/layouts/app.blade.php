@@ -27,6 +27,13 @@
         .fa-btn {
             margin-right: 6px;
         }
+        section {
+          display: inline-block;
+          margin:  0.25rem;
+          padding:  1rem;
+          width:  100%; 
+          background:  #efefef;
+        }
 
 
         .stylish-input-group .input-group-addon{
@@ -164,6 +171,19 @@
           display:block;
           margin:50px auto;
           float:left
+        }
+        .test {
+          margin-top: 3rem;
+          margin-bottom: 2rem;
+          height: 22rem;
+        }
+        hr {
+          height: 5px;
+          border-color: #555;
+          background-color:#555;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          width: 100%;
         }
     </style>
 

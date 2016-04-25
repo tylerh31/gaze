@@ -17,6 +17,9 @@
                                 <h6>Location</h6>
                             @endif
                         <p>{!! $pos->user !!}</p>
+                        @if($pos->user == Auth::user()->name)
+                            <a href="{{URL::to('destroy', $pos->id)}}" class="h6">Delete Thread</a>
+                        @endif
                         {!! Form::open(array('action' => array('HomeController@newReply', $pos->id))) !!}
                             <div class="form-group">
                                 {!! Form::textarea('body', 'Enter Comment Here...', ['class' => 'form-control']) !!}

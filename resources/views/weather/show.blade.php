@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
+  @if($error)
+  <div class="alert alert-danger col-sm-4 col-sm-offset-4" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {!! $error !!}
+  </div>
+  @endif
 	<div class="container">
 		{!! Form::open(['method' => 'POST', 'action' => 'HomeController@weather']) !!}
 			<div class="row">

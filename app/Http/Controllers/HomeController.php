@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use PDF;
 use DB;
+use Session;
 use App\Thread;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -34,7 +35,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $details = json_decode(file_get_contents("http://ipinfo.io/"));
+        $details = $details->postal; // zip
+        $aerisurl = "http://api.wunderground.com/api/565010eb55032207/forecast/q/{$details}.json";
+
+        $aerisjson = file_get_contents($aerisurl, 'r');
+        $aerisresponse = json_decode($aerisjson);
+        $night_text = $aerisresponse->forecast->txt_forecast->forecastday[1]->title;
+        $night_forecast = $aerisresponse->forecast->txt_forecast->forecastday[1]->fcttext;
+
+        $posts = DB::table('threads')->count();
+        return view('hometest', compact('night_text', 'night_forecast', 'posts'));
     }
 
     /**
@@ -86,16 +97,16 @@ class HomeController extends Controller
         if($request->get('body') == '')
         {
             $post = DB::table('threads')->where('id', $id)->get();
-            $reply = DB::table('replies')->where('replyToId', $id)->get();
+            $reply = DB::table('replies')->where('reply_to_id', $id)->get();
             return view('forum.singleThread', compact('post', 'reply'));
         }
         else
         {
         DB::table('replies')->insert(
-            ['body' => $request->get('body'), 'replyToId' => $id, 'user' => Auth::user()->name, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
+            ['body' => $request->get('body'), 'reply_to_id' => $id, 'user' => Auth::user()->name, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
         $post = DB::table('threads')->where('id', $id)->get();
-        $reply = DB::table('replies')->where('replyToId', $id)->get();
+        $reply = DB::table('replies')->where('reply_to_id', $id)->get();
         return view('forum.singleThread', compact('post', 'reply'));
         }
     }
@@ -103,10 +114,21 @@ class HomeController extends Controller
     public function singleThread($id)
     {
         $post = DB::table('threads')->where('id', $id)->get();
-        $reply = DB::table('replies')->where('replyToId', $id)->get();
+        $reply = DB::table('replies')->where('reply_to_id', $id)->get();
         #dd($reply);
         #dd($post);
         return view('forum.singleThread', compact('post', 'reply'));
+    }
+
+    public function destroy($id)
+    {
+        $thread = Thread::findOrFail($id);
+
+        $thread->delete();
+
+        $cats = Thread::distinct()->select('category')->orderBy('category', 'asc')->get();
+
+        return view('forum.categories', compact('cats'));
     }
 
     public function weather(Request $request)
@@ -139,6 +161,25 @@ class HomeController extends Controller
         $wunderresponse = json_decode($wunderjson);
         $wunderweatherresponse = json_decode($wunderweatherjson);
 
+        $error = '';
+
+        if(isset($aerisresponse->response->error->type))
+        {
+            $aerisurl = "http://api.wunderground.com/api/565010eb55032207/forecast/q/{$details}.json";
+            $wunderground = "http://api.wunderground.com/api/565010eb55032207/astronomy/q/{$details}.json";
+            $wunderweather = "http://api.wunderground.com/api/565010eb55032207/conditions/q/{$details}.json";
+
+            $aerisjson = file_get_contents($aerisurl, 'r');
+            $wunderjson = file_get_contents($wunderground, 'r');
+            $wunderweatherjson = file_get_contents($wunderweather, 'r');
+
+            $aerisresponse = json_decode($aerisjson);
+            $wunderresponse = json_decode($wunderjson);
+            $wunderweatherresponse = json_decode($wunderweatherjson);
+
+            $error = 'Please enter valid zip code.';
+        }
+
         $location = $wunderweatherresponse->current_observation->display_location->full;
         $night_text = $aerisresponse->forecast->txt_forecast->forecastday[1]->title;
         $night_forecast = $aerisresponse->forecast->txt_forecast->forecastday[1]->fcttext;
@@ -169,11 +210,8 @@ class HomeController extends Controller
             $sun_set = $sun_set_hour . ":" . $sun_set_minute . " A.M.";
         }
 
-        $pdf = PDF::loadView('weather.test', compact('moon_phase', 'moon_illum', 'moon_rise', 'sun_set', 'night_text', 'night_forecast', 'location'));
-        //return $pdf->download('invoice.pdf');
-        //dd($moon_rise, $sun_set);
+        return view('weather.show', compact('details', 'moon_phase', 'moon_illum', 'moon_rise', 'sun_set', 'night_text', 'night_forecast', 'location', 'error'));
 
-        return view('weather.show', compact('details', 'moon_phase', 'moon_illum', 'moon_rise', 'sun_set', 'night_text', 'night_forecast', 'location'));
         //dd($moon_name, $moon_illum, date('r', $moon_rise), date('r', $sun_rise), date('r', $sun_set), date('r', time()));
     }
 
