@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
-	<div class="col-sm-6">
+	<div class="col-sm-6" style="position: fixed; top: 9%;">
 		<aside class="my-relative-position-class">
-			<a class="twitter-timeline" href="https://twitter.com/tylerhamsen/lists/gaze" data-widget-id="717932931776454656" width="50rem" height="65rem" style="position: fixed;">Tweets from https://twitter.com/tylerhamsen/lists/gaze</a>
+			<a class="twitter-timeline" href="https://twitter.com/tylerhamsen/lists/gaze" data-widget-id="717932931776454656" width="50rem" height="85%" style="position: fixed;">Tweets from https://twitter.com/tylerhamsen/lists/gaze</a>
 		</aside>
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-6 col-sm-offset-6" style="margin-top: 1%;">
 		<section>
 		<h1 style="text-align: left;">Article Title</h1>
 			<p>Article text will be going here but now its just stupid dummy text. haha but you just read it all. You dont give up I like you</p>

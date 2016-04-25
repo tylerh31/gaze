@@ -169,7 +169,7 @@
         }
         #moonCanvas {
           display:block;
-          margin:50px auto;
+          margin:17% auto;
           float:left
         }
         .test {
