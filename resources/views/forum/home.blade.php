@@ -10,9 +10,9 @@
                     <div class="panel-body">
                         {!! Form::open(['method' => 'POST', 'action' => 'HomeController@newThread']) !!}
                             <div class="form-group">
-                                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
                                 <br>
-                                {!! Form::textarea('body', null, ['class' => 'form-control',  'rows' => 4, 'cols' => 40]) !!}
+                                {!! Form::textarea('body', null, ['class' => 'form-control',  'rows' => 4, 'cols' => 40, 'placeholder' => 'Body']) !!}
                             </div>
                             <div class="form-group">
                             {!! Form::select('category', array(

@@ -16,7 +16,7 @@
         <div class="col-md-6 test">
         <h3><a href="{{ url('/weather') }}" style="color: #555;">Weather</a></h3>
         <hr>
-        <div style="background-image:url('{{ asset('IMG_9995.jpg') }}'); height: 175px;" class="jumbotron jumbotron-dark"><h3 style="margin-top: 8px; color: white;">{!! $night_text !!}</h3> <br><p style="color: white; font-size: 10pt;">{!! $night_forecast !!}</p></div>
+        <div style="background-image:url('{{ asset('IMG_9995.jpg') }}'); height: 175px;" class="jumbotron jumbotron-dark"><h3 style="margin-top: 8px; color: white;">{!! $night_text !!}</h3><p style="color: white; font-size: 10pt;">{!! $night_forecast !!}</p></div>
         </div>
         <div class="col-md-6 test">
         <h3><a href="{{ url('/solarsystem') }}" style="color: #555;">Interactive Solar System</a></h3>

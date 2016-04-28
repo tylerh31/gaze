@@ -48,18 +48,6 @@ class HomeController extends Controller
         return view('hometest', compact('night_text', 'night_forecast', 'posts'));
     }
 
-    /**
-     * Show the application forum.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function forum()
-    {
-        $threads = Thread::orderBy('created_at', 'desc')->paginate(10);
-        #dd($threads);
-        return view('forum.home', compact('threads'));
-    }
-
     public function categories()
     {
         $cats = Thread::distinct()->select('category')->orderBy('category', 'asc')->get();
@@ -115,8 +103,6 @@ class HomeController extends Controller
     {
         $post = DB::table('threads')->where('id', $id)->get();
         $reply = DB::table('replies')->where('reply_to_id', $id)->get();
-        #dd($reply);
-        #dd($post);
         return view('forum.singleThread', compact('post', 'reply'));
     }
 
@@ -137,7 +123,7 @@ class HomeController extends Controller
         $details = $details->postal; // zip
 
         date_default_timezone_set('EST');
-        //http://api.aerisapi.com/sunmoon/07731?client_id=w0wLMj5tgENboyCpOQLUx&client_secret=9yA1LNrGNVr5JfuZlSxgIMxaSqRT9TWkmQLM7z5W
+
         if($request->get('body') == '')
         {
             $aerisurl = "http://api.wunderground.com/api/565010eb55032207/forecast/q/{$details}.json";
@@ -211,8 +197,6 @@ class HomeController extends Controller
         }
 
         return view('weather.show', compact('details', 'moon_phase', 'moon_illum', 'moon_rise', 'sun_set', 'night_text', 'night_forecast', 'location', 'error'));
-
-        //dd($moon_name, $moon_illum, date('r', $moon_rise), date('r', $sun_rise), date('r', $sun_set), date('r', time()));
     }
 
     public function stars()
@@ -225,6 +209,4 @@ class HomeController extends Controller
 
         return view('news.show');
     }
-
-    //http://api.wunderground.com/api/565010eb55032207/conditions/q/CA/San_Francisco.json
 }

@@ -1516,7 +1516,7 @@ body {
 
     <div id="navbar-ss">
       <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
-      <h1>3D Solar System</h1>
+      <h1>3D Solar System<br><span>by <a href="https://twitter.com/JulianGarnier" target="_blank">@JulianGarnier</a></span></h1>
       <button id="btn form-control" onclick="goBack()"><--Back</button>
       <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controls</a>
     </div>
