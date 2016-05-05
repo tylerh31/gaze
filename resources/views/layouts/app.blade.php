@@ -188,6 +188,10 @@
           margin-bottom: 20px;
           width: 100%;
         }
+        .navbar-brand:hover {
+          color: white;
+          font-size: 150%;
+        }
     </style>
 
 
