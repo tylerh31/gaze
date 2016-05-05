@@ -20,18 +20,6 @@ class CreateRepliesTable extends Migration
             $table->string('reply_to_id'); //id that is being replied to (hopefully will work for both replies and threads)
             $table->timestamps();
         });
-
-        Reply::create([
-            'body' => 'This is a reply.',
-            'user' => 'frank',
-            'reply_to_id' => '1'
-        ]);
-
-        Reply::create([
-            'body' => 'This is also a reply.',
-            'user' => 'timmy',
-            'reply_to_id' => '1'
-        ]);
     }
 
     /**

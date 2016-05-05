@@ -230,15 +230,25 @@ em.planet.right {
 
 	<body>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
-    <h2>Welcome To</h2>
-    <h1>
-      <em></em>
-      <em class="planet left">G</em>
-      <em>A</em>
-      <em>Z</em>
-      <em class="planet right">E</em>
-      <em></em>
-    </h1>
-    <h4><a href="{{ url('/home') }}">Click here to enter</a></h4>
+    <div class="container">
+      <div class="col-sm-12 row">
+        <div class="col-sm-3">
+          <h2>Welcome To</h2>
+        </div>
+        <div class="col-sm-6">
+          <h1>
+            <em></em>
+            <em class="planet left">G</em>
+            <em>A</em>
+            <em>Z</em>
+            <em class="planet right">E</em>
+            <em></em>
+          </h1>
+        </div>
+        <div class="col-sm-12">
+          <h4><a href="{{ url('/home') }}">Click here to enter</a></h4>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
