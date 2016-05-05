@@ -20,6 +20,13 @@ body {
   background: black;
   color: #ccc;
 }
+.gazelogo {
+  color: white;
+}
+.gazelogo:hover {
+  text-decoration: none;
+  font-size: 150%;
+}
 
 
 html::before,
@@ -231,22 +238,18 @@ em.planet.right {
 	<body>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
     <div class="container">
-      <div class="col-sm-12 row">
-        <div class="col-sm-3">
-          <h2>Welcome To</h2>
-        </div>
+      <div class="col-sm-12">
         <div class="col-sm-6">
-          <h1>
-            <em></em>
-            <em class="planet left">G</em>
-            <em>A</em>
-            <em>Z</em>
-            <em class="planet right">E</em>
-            <em></em>
-          </h1>
-        </div>
-        <div class="col-sm-12">
-          <h4><a href="{{ url('/home') }}">Click here to enter</a></h4>
+          <a href="{{ url('/home') }}" class="gazelogo">
+            <h1>
+              <em></em>
+              <em class="planet left">G</em>
+              <em>A</em>
+              <em>Z</em>
+              <em class="planet right">E</em>
+              <em></em>
+            </h1>
+          </a>
         </div>
       </div>
     </div>
