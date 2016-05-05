@@ -53,6 +53,9 @@
             background-color: #2c3e50;
             border-color: #2c3e50;
         }
+        .icon-bar {
+            background-color: white;
+        }
         @import url(//fonts.googleapis.com/css?family=Open+Sans:400,600);
         *, *::before, *::after {
           box-sizing: border-box;
