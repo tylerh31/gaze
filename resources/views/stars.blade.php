@@ -19,6 +19,7 @@ body {
   align-items: center;
   background: black;
   color: #ccc;
+  background-size: 100%;
 }
 .gazelogo {
   color: white;
@@ -125,11 +126,10 @@ em.planet.right {
 
 	</head>
 
-	<body style="background-image:url('{{ asset('/IMG_9995.jpg') }}');background-size: 100% 100%;">
+	<body style="background-image:url('{{ asset('/IMG_9995.jpg') }}');">
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
     <div class="container">
-      <div class="col-sm-12">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <a href="{{ url('/home') }}" class="gazelogo">
             <h1>
               <em></em>
@@ -141,7 +141,6 @@ em.planet.right {
             </h1>
           </a>
         </div>
-      </div>
     </div>
 </body>
 </html>
